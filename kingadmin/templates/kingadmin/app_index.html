@@ -1,0 +1,51 @@
+{% extends 'kingadmin/index.html' %}
+{% load admin_tags %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">{{ current_app }}</li>
+    </ul>
+{% endblock %}
+
+{% block page-content %}
+    {% for app_name,admin_class_dict in enabled_admins.items %}
+        <div class="row">
+            <div class="panel panel-info col-md-11">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a href="#">{{ app_name|upper }}</a>
+                    </h3>
+
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-vcenter table-hover">
+                            {% for model_name,adim_class in admin_class_dict.items %}
+
+                                <tr class="active">
+                                    <td><a href="{% url 'table_list' app_name model_name %}">{% get_table_name adim_class %}</a></td>
+
+                                    {% if not adim_class.readonly_table %}
+
+                                        <td><a href="{% url 'table_add' app_name model_name %}">增加</a></td>
+                                        <td><a href="{% url 'table_list' app_name model_name %}">修改</a></td>
+
+                                    {% else %}
+                                        <td></td>
+                                        <td></td>
+                                    {% endif %}
+                                </tr>
+
+                            {% endfor %}
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+
+
+{% endblock %}
