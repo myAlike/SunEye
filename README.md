@@ -4,7 +4,7 @@
     sudo python3 manage.py runserver 0.0.0.0:8030
     
 
-###6.登录
+###2.登录
 *   管理用户登录通过浏览器打开`http://your_ip_addr:9000/`
     
         用户名:root1@126.com
