@@ -1,7 +1,7 @@
 from django import forms
 from django.forms.models import ModelForm
 
-
+aasdad
 def __new__(cls, *args, **kwargs):
     # self.fields['customer_note'].widget.attrs['class'] = 'form-control'
     # disabled_fields = ['qq', 'consultant']
